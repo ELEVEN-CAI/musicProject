@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+
+</head>
+<body>
+    <h1>用户列表</h1>
+    <ul id="userUL">
+    </ul>
+
+
+<script src="/static/js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $.getJSON('/users/',function (data) {
+            console.log(data);
+            var ul = $('#userUL');
+            // ul.html('');
+            for(var i =0;i<data.length;i++){
+                obj = data[i];
+                console.log(obj);
+
+                ul.append("<li>"+obj.name+":"+obj.phone+"</li>")
+            }
+        })
+    })
+</script>
+</body>
+</html>

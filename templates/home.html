@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+    <h3>用户列表</h3>
+    <h4>当前主机的IP地址： {{ request.remote_addr }}</h4>
+    <h4>当前应用的环境</h4>
+    <ul>
+    {% for key,value in config.items() %}
+        <li>{{ key }}: {{ value }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

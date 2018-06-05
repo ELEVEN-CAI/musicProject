@@ -1,0 +1,23 @@
+1. Flask－Cache缓存
+   1）pip install flask-cache
+   2) 创建Cache对象
+      from flask_cache import Cache
+
+      # 有些案例 (过时)
+      # from flask.ext.cache import Cache
+
+      cache = Cache(app, config={'CACHE_TYPE':'simple'})
+
+      # 创建cache时如果没有指定app，
+      ＃则要调用cache.init_app(app)来初始化
+   3)  使用cache
+       a) 缓存template模板内容
+          在请求处理函数的上一行添加:
+          @cache.cached(timeout=60)
+
+       b) 缓存其它数据(原生的(API)函数)
+          cache.set(key,value,timeout) 设置缓存数据
+          cache.get(key) 读取缓存数据
+
+       c) 清除缓存
+          cache.clear()

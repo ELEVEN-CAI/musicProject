@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RestFull主页</title>
+</head>
+<body>
+<h3>RestFull主页</h3>
+<a href="" >All用户</a>
+<a href="">图库</a>
+<a href="">音乐库</a>
+<a onclick="updateImg()">PATCH更新图片</a>
+<div>
+    <ul id="content"></ul>
+</div>
+<script src="/static/js/jquery.min.js"></script>
+<script>
+    function updateImg() {
+        alert('正在更新图片资源');
+        $.ajax('/api/images', {
+            type:'PATCH',
+            data:"id=3&name=皮皮虾&url=/static/images/ms4.jpg",
+            success:function (data) {
+                alert(data);
+                console.log(data);
+            }
+        })
+    }
+</script>
+</body>
+</html>
